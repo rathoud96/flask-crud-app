@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# python manage.py db init
-# python manage.py db migrate
-# python manage.py db upgrade
+export FLASK_CONFIG=development
+export FLASK_APP=run.py
+# flask db init
+flask db migrate
+# flask db upgrade
 
 cd /app
-python run.py
+flask run

@@ -10,14 +10,15 @@ COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
 
 ENV FLASK_CONFIG=development
-# ENV FLASK_APP=run.py
+ENV FLASK_APP=run.py
 
 RUN pip install -r requirements.txt
 
 COPY . /app
 
+RUN chmod +x docker-entrypoint.sh
+
 EXPOSE 80
 
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "./docker-entrypoint.sh" ]
 
-CMD ["run.py"]
